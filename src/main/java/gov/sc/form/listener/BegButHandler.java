@@ -78,6 +78,7 @@ public class BegButHandler implements ActionListener {
 			File fileSta = new File(reFile.replace(".xls",
 					"(过滤后统计数据" + selectTarCol.getSelectedItem() + "+"
 							+ selectTarTim.getSelectedItem() + ").xls"));
+			proBar.setString("判断是否解析过此文件，请稍后...");
 			if (fileAll.exists()) {
 				int Yes = JOptionPane.showConfirmDialog(jFrame,
 						"文件已经解析过，是否删除已存在的文件，并生成新文件");
@@ -88,6 +89,7 @@ public class BegButHandler implements ActionListener {
 					return;
 				}
 			}
+			proBar.setString("数据解析中，请稍后...");
 			begBut.setEnabled(false);
 			scanBut.setEnabled(false);
 			try {
@@ -97,8 +99,6 @@ public class BegButHandler implements ActionListener {
 				logger.info("read Excel file error---->" + e.toString());
 				return;
 			}
-			
-			proBar.setString("文件解析中...");
 			int tarline = selectTarCol.getSelectedIndex();
 			int timeline = selectTarTim.getSelectedIndex();
 			Cluster cluster = new Cluster(cells, tarline, timeline);
@@ -107,6 +107,7 @@ public class BegButHandler implements ActionListener {
 					"(过滤后所有数据" + selectTarCol.getSelectedItem() + "+"
 							+ selectTarTim.getSelectedItem() + ").xls"));
 			try {
+				proBar.setString("将结果写入文件，请稍后...");
 				write.write(reList,proBar);
 			} catch (Exception e) {
 				logger.info("write all result file error--->" + e.toString());
@@ -125,7 +126,7 @@ public class BegButHandler implements ActionListener {
 				showErrorMessage();
 				return;
 			}
-			proBar.setString("解析成功！！！");
+			proBar.setString("文件解析成功！！！");
 			begBut.setEnabled(true);
 			scanBut.setEnabled(true);
 			proBar.setValue(0);

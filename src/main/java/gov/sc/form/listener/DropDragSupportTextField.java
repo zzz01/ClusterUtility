@@ -64,7 +64,7 @@ public class DropDragSupportTextField extends JTextField implements
 				selectTarTim.setSelectedIndex(i);
 			}
 		}
-		proBar.setString("获取文件成功");
+		proBar.setString("初始化成功，选择目标列和时间列，点击开始按钮。");
 		form.begBut.setEnabled(true);
 		dropThread = null;
 	}
@@ -91,7 +91,7 @@ public class DropDragSupportTextField extends JTextField implements
 		//判断是否存在已经存在的拖入线程，如果存在停止该线程。
 		if(begPress)
 		{
-			JOptionPane.showMessageDialog(jFrame, "正在解析，请稍后...");
+			JOptionPane.showMessageDialog(jFrame, "初始化中，请稍后...");
 			return;
 		}
 		if(dropThread != null)
@@ -99,7 +99,7 @@ public class DropDragSupportTextField extends JTextField implements
 		
 		JProgressBar proBar = form.progressbar;
 		form.begBut.setEnabled(false);
-		proBar.setString("正在解析，请稍后...");
+		proBar.setString("初始化中，请稍后...");
 		try {
 			Transferable tr = dtde.getTransferable(); // 得到传递来的数据对象
 			// 处理数据对象，得到其中的文本信息
@@ -124,7 +124,7 @@ public class DropDragSupportTextField extends JTextField implements
 			}
 		} catch (Exception err) {
 			err.printStackTrace();
-			form.progressbar.setString("文件获取失败.....");
+			form.progressbar.setString("文件初始化失败.....");
 			logger.info("initialization failed!" + err.toString());
 		}
 	}

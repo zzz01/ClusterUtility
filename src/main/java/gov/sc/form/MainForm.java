@@ -1,6 +1,5 @@
 package gov.sc.form;
 
-//添加注释 测试
 import gov.sc.form.listener.BegButHandler;
 import gov.sc.form.listener.ConfMiHandler;
 import gov.sc.form.listener.DropDragSupportTextField;
@@ -82,7 +81,7 @@ public class MainForm {
 		fileMenu.add(exitMI);
 		helpMenu.add(helpMI);
 		// 窗体
-		jFrame.setTitle("舆情监测器");
+		jFrame.setTitle("舆情信息过滤器");
 		// srcPthTxtFiled
 		srcPthTxtFiled.setColumns(21);
 		srcPthTxtFiled.setFont(new Font("宋体", Font.BOLD, 24));
@@ -92,7 +91,6 @@ public class MainForm {
 		selectTarCol.setFont(new Font("宋体", Font.BOLD, 25));
 		selectTarCol.addItem("请选择文件");
 		selectTarCol.setPreferredSize(new Dimension(130, 30));
-		selectTarCol.setLayout(null);
 		// selectTarTim
 		selectTarTim.setFont(new Font("宋体", Font.BOLD, 25));
 		selectTarTim.addItem("请选择文件");
